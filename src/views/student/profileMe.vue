@@ -105,7 +105,7 @@ export default {
             this.isLoading = true;
             await axios
                 .get(
-                    `${process.env.VUE_APP_API_GATEWAY}/client-service/v1/student/get/${this.payload.username}?token=${this.accessToken}`
+                    `${process.env.VUE_APP_API_GATEWAY}/user-service/v1/student/get/${this.payload.username}?token=${this.accessToken}`
                 )
                 .then((res) => {
                     console.log(res);
@@ -124,15 +124,12 @@ export default {
         async updateHandler() {
             this.isLoading = true;
             await axios
-                .patch(
-                    `${process.env.VUE_APP_API_GATEWAY}/client-service/v1/student/update?token=${this.accessToken}`,
-                    {
-                        id_student: this.studentData.id_student,
-                        fullName: this.studentData.fullName,
-                        phoneNumber: this.studentData.phoneNumber,
-                        address: this.studentData.address,
-                    }
-                )
+                .patch(`${process.env.VUE_APP_API_GATEWAY}/user-service/v1/student/update?token=${this.accessToken}`, {
+                    id_student: this.studentData.id_student,
+                    fullName: this.studentData.fullName,
+                    phoneNumber: this.studentData.phoneNumber,
+                    address: this.studentData.address,
+                })
                 .then((res) => {
                     if (res.data.status) {
                         this.toastify.success(res.data.message);

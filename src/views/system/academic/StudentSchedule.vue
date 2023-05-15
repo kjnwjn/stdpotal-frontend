@@ -168,7 +168,7 @@ export default {
         // async updateScore(academic){
         //     this.isLoading = true;
         //     await axios
-        //         .post(`${process.env.VUE_APP_API_GATEWAY}/client-service/v1/score/update-score`, {
+        //         .post(`${process.env.VUE_APP_API_GATEWAY}/user-service/v1/score/update-score`, {
         //             studentId: this.studentId,
         //             semesterAlias: this.semesterAlias,
         //         })

@@ -26,8 +26,17 @@
                         </tr>
                     </thead>
                     <tbody v-if="accountList && accountList.length > 0">
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" v-for="(account, i) in accountList" :key="i">
-                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ account.id_user }}</th>
+                        <tr
+                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                            v-for="(account, i) in accountList"
+                            :key="i"
+                        >
+                            <th
+                                scope="row"
+                                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                            >
+                                {{ account.id_user }}
+                            </th>
                             <td class="py-4 px-6">{{ account.id_faculty }}</td>
                             <td class="py-4 px-6">{{ account.fullName }}</td>
                             <td class="py-4 px-6">{{ account.gender ? "Male" : "Female" }}</td>
@@ -35,7 +44,11 @@
                             <td class="py-4 px-6">{{ account.phone || "--" }}</td>
                             <td class="py-4 px-6">{{ dateFormat(account.createdAt) }}</td>
                             <td class="py-4 px-6">{{ dateFormat(account.updatedAt) }}</td>
-                            <td class="py-4 px-6" v-on:click="accountRemoveHandler(account.userCode)" v-if="payload.role == 'ADMIN'">
+                            <td
+                                class="py-4 px-6"
+                                v-on:click="accountRemoveHandler(account.userCode)"
+                                v-if="payload.role == 'ADMIN'"
+                            >
                                 <div class="text-red-500 cursor-pointer"><ThemifyIcon icon="trash" />Delete</div>
                             </td>
                         </tr>
@@ -74,7 +87,7 @@ export default {
         async fetchData() {
             this.isLoading = true;
             await axios
-                .get(`${process.env.VUE_APP_API_GATEWAY}/client-service/v1/user/get-all`)
+                .get(`${process.env.VUE_APP_API_GATEWAY}/user-service/v1/user/get-all`)
                 .then((res) => {
                     if (res.data.status) {
                         this.accountList = res.data.data;

@@ -98,7 +98,7 @@ export default {
         async registerAccountHandler() {
             this.isLoading = true;
             await axios
-                .post(`${process.env.VUE_APP_API_GATEWAY}/client-service/v1/user/new`, {
+                .post(`${process.env.VUE_APP_API_GATEWAY}/user-service/v1/user/new`, {
                     fullName: this.fullName,
                     gender: this.gender,
                     id_faculty: this.id_faculty,

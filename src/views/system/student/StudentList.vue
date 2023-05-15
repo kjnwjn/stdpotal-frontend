@@ -87,7 +87,7 @@ export default {
         async fetchData() {
             this.isLoading = true;
             await axios
-                .get(`${process.env.VUE_APP_API_GATEWAY}/client-service/v1/student/get-all`)
+                .get(`${process.env.VUE_APP_API_GATEWAY}/user-service/v1/student/get-all`)
                 .then((res) => {
                     if (res.data.status) {
                         this.accountList = res.data.data;

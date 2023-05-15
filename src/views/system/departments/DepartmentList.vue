@@ -49,8 +49,17 @@
                         </tr>
                     </thead>
                     <tbody v-if="facultyList && facultyList.length > 0">
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" v-for="(faculty, i) in facultyList" :key="i">
-                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ faculty.id_faculty }}</th>
+                        <tr
+                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                            v-for="(faculty, i) in facultyList"
+                            :key="i"
+                        >
+                            <th
+                                scope="row"
+                                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                            >
+                                {{ faculty.id_faculty }}
+                            </th>
                             <td class="py-4 px-6">{{ faculty.faculty_name }}</td>
                             <td class="py-4 px-6">{{ dateFormat(faculty.createdAt) }}</td>
                             <td class="py-4 px-6">{{ dateFormat(faculty.updatedAt) }}</td>
@@ -94,7 +103,7 @@ export default {
         async fetchData() {
             this.isLoading = true;
             await axios
-                .get(`${process.env.VUE_APP_API_GATEWAY}/client-service/v1/faculty/get-all`)
+                .get(`${process.env.VUE_APP_API_GATEWAY}/user-service/v1/faculty/get-all`)
                 .then((res) => {
                     if (res.data.status) {
                         this.facultyList = res.data.data;
@@ -110,7 +119,9 @@ export default {
         async registerFacultyHandler() {
             this.isLoading = true;
             await axios
-                .post(`${process.env.VUE_APP_API_GATEWAY}/client-service/v1/faculty/new`, { faculty_name: this.faculty_name })
+                .post(`${process.env.VUE_APP_API_GATEWAY}/user-service/v1/faculty/new`, {
+                    faculty_name: this.faculty_name,
+                })
                 .then((res) => {
                     if (res.data.status) {
                         this.toastify.success(res.data.message);

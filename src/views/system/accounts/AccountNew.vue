@@ -25,7 +25,10 @@
                     </div>
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Gender</label>
-                        <select v-model="gender" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+                        <select
+                            v-model="gender"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                        >
                             <option value="1" selected>Male</option>
                             <option value="0">Female</option>
                         </select>
@@ -33,7 +36,9 @@
                 </div>
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Faculty ID</label>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                            >Faculty ID</label
+                        >
                         <input
                             v-model="id_faculty"
                             type="text"
@@ -44,7 +49,10 @@
                     </div>
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Role</label>
-                        <select v-model="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+                        <select
+                            v-model="role"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                        >
                             <option value="Faculty IT" selected>Faculty Manager</option>
                         </select>
                     </div>
@@ -115,7 +123,7 @@ export default {
         async registerAccountHandler() {
             this.isLoading = true;
             await axios
-                .post(`${process.env.VUE_APP_API_GATEWAY}/client-service/v1/user/new`, {
+                .post(`${process.env.VUE_APP_API_GATEWAY}/user-service/v1/user/new`, {
                     fullName: this.fullName,
                     gender: this.gender,
                     id_faculty: this.id_faculty,
